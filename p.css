@@ -1,0 +1,130 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+video#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.rainbow-box {
+  display: inline-block;
+  margin-top: 60px;
+  padding: 20px 30px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 400% 400%;
+  animation: rainbow 10s infinite;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+}
+
+.rainbow-box h1 {
+  margin: 0;
+  font-size: 1.8em;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 500px;
+  margin: 40px auto;
+}
+
+.slides {
+  display: none;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.active {
+  display: block;
+  animation: fade 2s;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
+
+@keyframes rainbow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Pulsing Heart */
+.heart {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 45px;
+  background: red;
+  transform: rotate(-45deg);
+  animation: pulse 1s infinite;
+  z-index: 5;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 45px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -25px;
+  left: 0;
+}
+
+.heart::after {
+  left: 25px;
+  top: 0;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1) rotate(-45deg); }
+  50% { transform: scale(1.2) rotate(-45deg); }
+  100% { transform: scale(1) rotate(-45deg); }
+}
+
+/* Floating Heart Rain */
+.heart-container::before {
+  content: "💖 💕 💓 💗 💘 💝";
+  position: fixed;
+  width: 100%;
+  font-size: 2rem;
+  animation: floatHearts 15s linear infinite;
+  pointer-events: none;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+@keyframes floatHearts {
+  0% { top: 100%; opacity: 0; }
+  25% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { top: -20%; opacity: 0; }
+}
